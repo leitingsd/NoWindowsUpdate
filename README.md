@@ -1,4 +1,4 @@
-# Multiple Methods to Disable Windows Automatic Updates (Windows 10 & 11)
+# Multiple Methods to Disable Windows Automatic Updates
 
 ## Multiple Methods to Disable Annoying Windows Updates Without Using Any Third-Party Software (Applicable to Windows 10 & 11)
 
