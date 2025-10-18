@@ -29,7 +29,7 @@ reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /v 
 reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /v TargetReleaseversionInfo /t REG_SZ /d 21H1
 ```
 
-> 📖 Source: [learn.microsoft.com](https://learn.microsoft.com/en-us/answers/questions/4145332/prevent-windows-10-upgrade-to-version-22h2)
+> 📖 Source: [learn.microsoft.com](https://learn.microsoft.com/en-us/answers/questions/4145332/prevent-windows-10-upgrade-to-version-22h2)  
 > 💡 Tip: Check your current Windows version by pressing “Ctrl + R” and entering `winver`, then replace the `/d` value in the command with your version.
 
 ---
@@ -41,13 +41,21 @@ This makes Windows treat your network as “metered,” pausing automatic update
   Settings → Network & Internet → Ethernet → Set as metered connection → On  
 
 - **Wi-Fi:**  
-  Settings → Network & Internet → WLAN → (Your Wi-Fi Name) → Properties → Set as metered connection → On  
+  Settings → Network & Internet → WLAN → (Your Wi-Fi Name) Properties → Set as metered connection → On  
 
 ---
 
 ### 3. Turn Off Windows Update Options
 Settings → Windows Update → Advanced options  
-Turn **off all options** listed.
+Turn **off all options** listed.  
+
+You may see the following options: 
+- Receive updates for other Microsoft products;
+- Show me notifications for other Microsoft services;
+- **Download updates over metered connections (important);**
+- Notify me when a restart is required to finish updates.
+
+> Make sure **all of the above options are turned off**, especially “**Download updates over metered connections**”.
 
 ---
 
@@ -64,8 +72,8 @@ Turn off “Allow downloads from other PCs”.
 ---
 
 ### 6. Limit Download Bandwidth
-Settings → Windows Update → Advanced options → Download settings  
-Choose “Absolute bandwidth”, enable “Limit how much bandwidth is used for downloading updates in the background (or foreground)”, and set to:
+Settings → Windows Update → Advanced options → Delivery Optimization → Advanced options
+Under “Download settings”, choose **“Absolute bandwidth”**, enable **“Limit how much bandwidth is used for downloading updates in the background (or foreground)”**, and set it to:
 
 ```
 0.1 Mbps
@@ -73,8 +81,13 @@ Choose “Absolute bandwidth”, enable “Limit how much bandwidth is used for 
 
 ---
 
-### DisclaimerNote: It is generally **not recommended to disable Windows updates**.  
-Disabling updates is intended only for specific software environments or particular version requirements.
+###⚠️ Disclaimer
+
+Note: It is generally not recommended to disable Windows updates.
+Disabling updates should only be done for specific version or software environment requirements.
+
+⚠️ If your PC is managed by a company or organization (under group policy restrictions), some settings in this guide may not be changeable.
+In such cases, please consult your IT administrator before performing any operations.
 
 ⚠️Before performing these actions, please be aware of the following risks:
 
@@ -82,4 +95,18 @@ Disabling updates is intended only for specific software environments or particu
 - The author does not take any responsibility for consequences arising from this operation.  
 - Disabling updates may affect stability and normal operation of some programs.
 
-⚠️Please carefully decide whether to disable Windows updates based on your needs.
+Please carefully decide whether to disable Windows updates based on your needs.
+
+---
+
+### Friendly Reminder
+After completing the settings in this guide, you may still occasionally see Windows Update notifications or messages showing that updates are **being downloaded**.  
+Please don’t worry — this is **normal**.  
+
+The configurations above only prevent Windows Update from **automatically downloading and installing updates**.  
+They do **not** completely stop the Windows Update service itself.  
+The Windows Update service will **still check for updates periodically**.  
+
+If Windows Update shows that it is downloading updates, you will likely notice that the download progress remains stuck at **“Downloading – 0%”**.  
+After a while, Windows will treat the download as **timed out**, automatically cancel it,  
+and display the message: **“You’re up to date.”**
