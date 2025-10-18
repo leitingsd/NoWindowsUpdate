@@ -103,7 +103,7 @@ reg add HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate /v 
 在根据本教程完成设置后，您可能仍有机会在 设置 → Windows 更新 中见到 Windows 更新的提示或其**正在尝试自动下载更新**，  
 但请不要担心，这是**正常**的。  
 
-上面的设置只能起到禁止 Windows Update自动下载与安装的作用，并不能彻底阻止 Windows Update 服务运行，  
+上面的设置只能起到禁止 Windows Update 自动下载与安装的作用，并不能彻底阻止 Windows Update 服务运行，  
 Windows Update 服务**仍然会定期检查更新**。  
 
 如果您的 Windows 更新提示其正在下载更新，您会发现它的下载进度会长时间卡在“正在下载 - 0%”，  
